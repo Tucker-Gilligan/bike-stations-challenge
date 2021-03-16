@@ -71,3 +71,22 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.rental__methods {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.payment__options {
+  /* list-style: none; */
+  /* display: flex; */
+  /* justify-content: space-between; */
+  padding: 0;
+
+  white-space: nowrap;
+}
+.payment__option {
+  padding: 0.3rem;
+}

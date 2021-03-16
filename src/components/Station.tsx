@@ -43,6 +43,7 @@ export default class Station extends Component<CurrentState> {
 
     return (
       <ul className='station__list__item'>
+        <li>Capacity: {station.capacity}</li>
         <li className='station__header'>
           <h2 className='station__info'>
             <span className='station__label'>Station</span>
@@ -50,29 +51,24 @@ export default class Station extends Component<CurrentState> {
             <span className='station__label'>Address</span>
             <span className='station__address'>{station.address}</span>
           </h2>
-          <div className='availability'>
-            <h3>
-              <span className={this.renderBikeClass()}>
-                {station.num_bikes_available}
-              </span>{' '}
-              {station.num_bikes_available === 1 ? 'Bike' : 'Bikes'}
-            </h3>
-            <h3>
-              <span className={this.renderDockClass()}>
-                {station.num_docks_available}
-              </span>{' '}
-              {station.num_docks_available === 1 ? 'Dock' : 'Docks'}
-            </h3>
-          </div>
-          <h4 className='station__status'>{station.status}</h4>
+        </li>
+
+        <li className='availability'>
+          <h3>
+            <span className={this.renderBikeClass()}>
+              {station.num_bikes_available}
+            </span>{' '}
+            {station.num_bikes_available === 1 ? 'Bike' : 'Bikes'}
+          </h3>
+          <h3>
+            <span className={this.renderDockClass()}>
+              {station.num_docks_available}
+            </span>{' '}
+            {station.num_docks_available === 1 ? 'Dock' : 'Docks'}
+          </h3>
         </li>
         <li className='rental__methods'>
-          Rental Methods:{' '}
-          <ol className='payment__options'>
-            {rentalMethods.map(method => {
-              return <li key={rentalMethods.indexOf(method)}>{method}</li>;
-            })}
-          </ol>
+          <p className='payment__options'>{rentalMethods.join(' / ')}</p>
         </li>
       </ul>
     );
