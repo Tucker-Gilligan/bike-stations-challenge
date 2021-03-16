@@ -1,13 +1,9 @@
 import { FetchStationInformationAction } from './info';
-import {
-  FetchStationStatusAction,
-  // DisplayStatusAction
-} from './status';
+import { FetchStationStatusAction } from './status';
 
 export enum ActionTypes {
   fetchStationInformation,
   fetchStationStatus,
-  // displayStatus,
 }
 
 export type Action = FetchStationInformationAction | FetchStationStatusAction;

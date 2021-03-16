@@ -20,7 +20,6 @@ export interface StationsInfoRes {
 
 export interface FetchStationInformationAction {
   type: ActionTypes.fetchStationInformation;
-  // payload: StationsInfoList;
   payload: StationInformation[];
 }
 

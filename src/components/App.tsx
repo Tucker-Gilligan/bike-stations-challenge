@@ -77,6 +77,10 @@ class _App extends Component<AppProps> {
       50
     );
 
+    // sliced data before this call to reduce runtime with this O(n^2) function
+    // (need to check 50 objects in main loop, rather than hundreds)
+    // this function creates a temporary object with data from each API call
+    // where the station_id is a match
     for (let i = 0; i < firstFiftyStations.length; i++) {
       this.props.stationStatus.forEach(station => {
         if (station.station_id === firstFiftyStations[i].station_id) {

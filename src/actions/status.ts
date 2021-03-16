@@ -20,13 +20,7 @@ export interface StationStatusRes {
 export interface FetchStationStatusAction {
   type: ActionTypes.fetchStationStatus;
   payload: StationStatus[];
-  // payload: StationsStatusList;
 }
-
-// export interface DisplayStatusAction {
-//   type: ActionTypes.displayStatus;
-//   payload: number;
-// }
 
 export const fetchStationStatus = () => {
   const stationStatusUrl =
@@ -35,7 +29,6 @@ export const fetchStationStatus = () => {
     const response = await axios
       .get<StationStatusRes>(stationStatusUrl)
       .then(res => res.data.data.stations);
-    // .catch(error => 'error');
 
     dispatch<FetchStationStatusAction>({
       type: ActionTypes.fetchStationStatus,
@@ -43,10 +36,3 @@ export const fetchStationStatus = () => {
     });
   };
 };
-
-// export const displayStatus = (id: number): DisplayStatusAction => {
-//   return {
-//     type: ActionTypes.displayStatus,
-//     payload: id,
-//   };
-// };
