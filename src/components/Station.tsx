@@ -46,18 +46,17 @@ export default class Station extends Component<CurrentState> {
         <li className='capacity'>Capacity: {station.capacity} </li>
 
         <li className='station__header'>
-          <div className='station__payment'>
-            <h2 className='station__info'>
-              <div className='label__data'>
-                <span className='station__label'>Station</span>
-                <span className='station__name'>{station.name}</span>
-              </div>
-              <div className='label__data'>
-                <span className='station__label'>Address</span>
-                <span className='station__address'>{station.address}</span>
-              </div>
-            </h2>
-          </div>
+          <h2 className='station__info'>
+            <div className='label__data'>
+              <span className='station__label'>Station</span>
+              <span className='station__name'>{station.name}</span>
+            </div>
+            <div className='label__data'>
+              <span className='station__label'>Address</span>
+              <span className='station__address'>{station.address}</span>
+            </div>
+          </h2>
+
           <p className='payment__options'>{rentalMethods.join(' / ')}</p>
         </li>
 

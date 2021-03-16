@@ -10,8 +10,15 @@
   margin: 0;
 }
 
-.main__container {
-  /* padding-top: 9rem; */
+.label__data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.station__label {
+  font-style: italic;
 }
 
 .station__list__item {
@@ -130,10 +137,13 @@
     text-align: left;
   }
   .label__data {
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
+    justify-content: left;
+    text-align: left;
   }
+  .label__data:first-child {
+    padding-bottom: 0.5rem;
+  }
+
   .station__label {
     padding: 0;
   }
