@@ -11,6 +11,3 @@ export enum ActionTypes {
 }
 
 export type Action = FetchStationInformationAction | FetchStationStatusAction;
-// | DisplayStatusAction;
-
-//fetch station information will be sort by name

@@ -1,6 +1,6 @@
 .station__list__item {
-  color: #f6f6f6;
-  background-color: rgb(5, 88, 37);
+  color: #1b1719;
+  background-color: #d4d6d5;
   padding: 2rem;
   list-style: none;
   border-radius: 1rem;
@@ -8,13 +8,23 @@
 }
 
 .station__header {
-  font-size: 120%;
+  font-size: 100%;
   text-align: center;
 }
 
 .station__name {
   margin: 0;
   padding: 0;
+}
+
+.station__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.station__label {
+  padding: 0.5rem;
+  text-decoration: underline;
 }
 
 .station__status {
@@ -43,4 +53,21 @@
   font-size: 120%;
   padding: 0.5rem;
   border-radius: 1rem;
+}
+
+.red {
+  color: red;
+}
+
+.orange {
+  color: orange;
+}
+
+.green {
+  color: green;
+}
+
+.availability {
+  display: flex;
+  justify-content: space-evenly;
 }

@@ -7,7 +7,7 @@ import {
   StationStatus,
   fetchStationStatus,
 } from '../actions';
-
+import Station from './Station';
 import { StoreState } from '../reducers';
 
 interface AppProps {
@@ -17,11 +17,10 @@ interface AppProps {
   fetchStationStatus: Function;
 }
 
-interface CombinedStation {
+export interface CombinedStation {
   station_id: number;
   name: string;
   address: string;
-  cross_street?: string;
   capacity: number;
   num_bikes_available?: number;
   num_docks_available?: number;
@@ -31,10 +30,10 @@ interface CombinedStation {
 
 class _App extends Component<AppProps> {
   state = {
-    sortByName: true,
-    sortByCapacity: false,
     nameSort: [],
     capacitySort: [],
+    sortByName: true,
+    sortByCapacity: false,
     fetching: false,
   };
 
@@ -45,7 +44,7 @@ class _App extends Component<AppProps> {
       this.setState({ fetching: true });
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(): void {
     this.props.stationInformation.length !== 0 &&
       this.state.fetching === true &&
       this.setState({ fetching: false });
@@ -88,36 +87,7 @@ class _App extends Component<AppProps> {
     }
 
     return firstFiftyStations.map(station => {
-      let rentalMethods = station.rental_methods;
-      return (
-        <ul key={station.station_id} className='station__list__item'>
-          <li className='station__header'>
-            <h2 className='station__name'>{station.name}</h2>
-            <h4 className='station__status'>{station.status}</h4>
-          </li>
-          <li className='station__location'>
-            <p className='station__address'>
-              Station Address: {station.address}
-            </p>
-            <p className='station__cross__street'>
-              Cross Street: {station.cross_street}
-            </p>
-          </li>
-          <li>
-            Available/Capacity: {station.num_bikes_available} /{' '}
-            {station.capacity}
-            <div>Number of Docks Available: {station.num_docks_available}</div>
-          </li>
-          <li className='rental__methods'>
-            Rental Methods:{' '}
-            <ol className='payment__options'>
-              {rentalMethods.map(method => {
-                return <li key={rentalMethods.indexOf(method)}>{method}</li>;
-              })}
-            </ol>
-          </li>
-        </ul>
-      );
+      return <Station key={station.station_id} station={station} />;
     });
   }
 
@@ -149,36 +119,7 @@ class _App extends Component<AppProps> {
     }
 
     return firstFiftyStations.map(station => {
-      let rentalMethods = station.rental_methods;
-      return (
-        <ul key={station.station_id} className='station__list__item'>
-          <li className='station__header'>
-            <h2 className='station__name'>{station.name}</h2>
-            <h4 className='station__status'>{station.status}</h4>
-          </li>
-          <li className='station__location'>
-            <p className='station__address'>
-              Station Address: {station.address}
-            </p>
-            <p className='station__cross__street'>
-              Cross Street: {station.cross_street}
-            </p>
-          </li>
-          <li>
-            Available/Capacity: {station.num_bikes_available} /{' '}
-            {station.capacity}
-            <div>Number of Docks Available: {station.num_docks_available}</div>
-          </li>
-          <li className='rental__methods'>
-            Rental Methods:{' '}
-            <ol className='payment__options'>
-              {rentalMethods.map(method => {
-                return <li key={rentalMethods.indexOf(method)}>{method}</li>;
-              })}
-            </ol>
-          </li>
-        </ul>
-      );
+      return <Station key={station.station_id} station={station} />;
     });
   }
 

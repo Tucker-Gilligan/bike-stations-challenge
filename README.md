@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+# Bike Station Finder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Summary
 
-## Available Scripts
+This application was developed as part of a coding challenge, as well as for practice utilizing TypeScript and Redux.
 
-In the project directory, you can run:
+## User Stories
 
-### `npm start`
+- A user can view a list of stations sorted alphabetically by name
+- A user can view a list of stations sorted by capacity
+- A user can see a "loading..." while data is being retreived
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## BackLog User Stories
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- A user can click a bike station to show the bike station details
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- If there are > 1 bikes available, n will render in Green
+- If there is 1 bike available, 1 will render in Yellow && "bike" will be singular
+- If there are 0 bikes available, 0 will render in RED
+- If there are > 1 docks available, n will render in Green
+- If there is 1 dock available, 1 will render in Yellow && "dock" will be singular
+- If there are 0 docks available, 0 will render in RED
 
-### `npm run build`
+## Technologies Used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- TypeScript
+- React - initiated with npx create-react-app --template typescript
+- React-Redux - handles state management in a single store - supports bindings between redux and react.
+- Redux-Thunk - middleware that allows action creaters that return a function instead of an action. Used in this application for async cals to api
+- Axios - to execute GET requests
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## What I Learned
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project is my first application utilizing TypeScript and Redux in a React Application. TypeScript was valuable in the construction of this project in order to easily define prop types, and use of intellisense support/static type checking. Utilizing Redux AND TypeScript for the first time proved to be difficult, however I accomplished this through review of online documentation and use of online resources to practice each concept independently.
 
-### `npm run eject`
+## Areas for improvement
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### The files (namely the actions file) became very bulky due to the need to create custom types along with actions for the Redux store.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- I addressed this through modularization to separate actions for different pieces of state.
+- There is definitely room for improvement as I learn the intricacies of using TypeScript and Redux in a React application.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### App component got messy as features were implemented
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+###### To address this in the future, I intend to:
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Leverage the benefits of using Redux for state management to reduce the size of component files and need for local state
+- Further modularize tsx components and event listeners - this will come with practice using TS/Redux
