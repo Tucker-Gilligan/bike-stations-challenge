@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 import { connect } from 'react-redux';
 import {
   StationInformation,
@@ -34,11 +35,20 @@ class _App extends Component<AppProps> {
     sortByCapacity: false,
     nameSort: [],
     capacitySort: [],
+    fetching: false,
   };
 
   componentDidMount() {
     this.props.fetchStationInformation();
     this.props.fetchStationStatus();
+    this.props.stationInformation.length === 0 &&
+      this.setState({ fetching: true });
+  }
+
+  componentDidUpdate() {
+    this.props.stationInformation.length !== 0 &&
+      this.state.fetching === true &&
+      this.setState({ fetching: false });
   }
 
   onSortByNameClick = (): void => {
@@ -80,21 +90,29 @@ class _App extends Component<AppProps> {
     return firstFiftyStations.map(station => {
       let rentalMethods = station.rental_methods;
       return (
-        <ul key={station.station_id}>
-          <li>Name: {station.name}</li>
-          <li>{station.status}</li>
-          <li>Station Address: {station.address}</li>
-          <li>Cross Street: {station.cross_street}</li>
+        <ul key={station.station_id} className='station__list__item'>
+          <li className='station__header'>
+            <h2 className='station__name'>{station.name}</h2>
+            <h4 className='station__status'>{station.status}</h4>
+          </li>
+          <li className='station__location'>
+            <p className='station__address'>
+              Station Address: {station.address}
+            </p>
+            <p className='station__cross__street'>
+              Cross Street: {station.cross_street}
+            </p>
+          </li>
           <li>
             Available/Capacity: {station.num_bikes_available} /{' '}
             {station.capacity}
+            <div>Number of Docks Available: {station.num_docks_available}</div>
           </li>
-          <li>Number of Docks Available: {station.num_docks_available}</li>
-          <li>
+          <li className='rental__methods'>
             Rental Methods:{' '}
-            <ol>
+            <ol className='payment__options'>
               {rentalMethods.map(method => {
-                return <li>{method}</li>;
+                return <li key={rentalMethods.indexOf(method)}>{method}</li>;
               })}
             </ol>
           </li>
@@ -133,21 +151,29 @@ class _App extends Component<AppProps> {
     return firstFiftyStations.map(station => {
       let rentalMethods = station.rental_methods;
       return (
-        <ul key={station.station_id}>
-          <li>Name: {station.name}</li>
-          <li>{station.status}</li>
-          <li>Station Address: {station.address}</li>
-          <li>Cross Street: {station.cross_street}</li>
+        <ul key={station.station_id} className='station__list__item'>
+          <li className='station__header'>
+            <h2 className='station__name'>{station.name}</h2>
+            <h4 className='station__status'>{station.status}</h4>
+          </li>
+          <li className='station__location'>
+            <p className='station__address'>
+              Station Address: {station.address}
+            </p>
+            <p className='station__cross__street'>
+              Cross Street: {station.cross_street}
+            </p>
+          </li>
           <li>
             Available/Capacity: {station.num_bikes_available} /{' '}
             {station.capacity}
+            <div>Number of Docks Available: {station.num_docks_available}</div>
           </li>
-          <li>Number of Docks Available: {station.num_docks_available}</li>
-          <li>
+          <li className='rental__methods'>
             Rental Methods:{' '}
-            <ol>
+            <ol className='payment__options'>
               {rentalMethods.map(method => {
-                return <li>{method}</li>;
+                return <li key={rentalMethods.indexOf(method)}>{method}</li>;
               })}
             </ol>
           </li>
@@ -158,11 +184,20 @@ class _App extends Component<AppProps> {
 
   render() {
     return (
-      <div>
-        <button onClick={this.onSortByNameClick}>Sort by Name</button>
-        <button onClick={this.onSortByCapacityClick}>Sort by Capacity</button>
-        {this.state.sortByName && this.renderSortedByName()}
-        {this.state.sortByCapacity && this.renderSortedByCapacity()}
+      <div className='App__main'>
+        <div className='sort__options'>
+          <button className='sort__button' onClick={this.onSortByNameClick}>
+            Sort by Name
+          </button>
+          <button className='sort__button' onClick={this.onSortByCapacityClick}>
+            Sort by Capacity
+          </button>
+        </div>
+        <div className='main__container'>
+          {this.state.fetching && <p>loading....</p>}
+          {this.state.sortByName && this.renderSortedByName()}
+          {this.state.sortByCapacity && this.renderSortedByCapacity()}
+        </div>
       </div>
     );
   }

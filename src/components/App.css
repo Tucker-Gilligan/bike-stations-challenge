@@ -1,0 +1,46 @@
+.station__list__item {
+  color: #f6f6f6;
+  background-color: rgb(5, 88, 37);
+  padding: 2rem;
+  list-style: none;
+  border-radius: 1rem;
+  margin: 0.5rem;
+}
+
+.station__header {
+  font-size: 120%;
+  text-align: center;
+}
+
+.station__name {
+  margin: 0;
+  padding: 0;
+}
+
+.station__status {
+  margin: 0;
+  padding: 0.5rem;
+}
+
+.station__location {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 120%;
+}
+
+.station__address {
+  display: flex;
+  flex-direction: column;
+}
+.sort__options {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2rem;
+}
+
+.sort__button {
+  font-size: 120%;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
