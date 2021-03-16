@@ -12,61 +12,84 @@ import { StoreState } from '../reducers';
 interface AppProps {
   stationInformation: StationInformation[];
   stationStatus: StationStatus[];
-  fetchStationInformation: any;
-  fetchStationStatus: any;
+  fetchStationInformation: Function;
+  fetchStationStatus: Function;
+}
+
+interface CombinedStation {
+  station_id: number;
+  name: string;
+  address: string;
+  cross_street?: string;
+  capacity: number;
+  num_bikes_available?: number;
+  num_docks_available?: number;
+  rental_methods: string[];
+  status?: string;
 }
 
 class _App extends Component<AppProps> {
   state = {
-    statusClicked: false,
-    infoClicked: false,
-    stationNameClicked: false,
+    sortByName: true,
+    sortByCapacity: false,
     nameSort: [],
     capacitySort: [],
   };
 
   componentDidMount() {
     this.props.fetchStationInformation();
-    //   this.props.fetchStationStatus();
+    this.props.fetchStationStatus();
   }
 
-  onStationNameClick = (): void => {
+  onSortByNameClick = (): void => {
     this.setState({
-      stationNameClicked: true,
-      infoClicked: false,
-      statusClicked: false,
+      sortByName: true,
+      sortByCapacity: false,
     });
     this.props.fetchStationInformation();
   };
 
-  renderSortedByName(): JSX.Element[] {
-    // let tempArray: StationInformation[] = [];
-    console.log('BEFORE SORT', this.props.stationInformation[0]);
+  onSortByCapacityClick = (): void => {
+    this.setState({
+      sortByCapacity: true,
+      sortByName: false,
+    });
+  };
+
+  renderSortedByCapacity(): JSX.Element[] {
     this.props.stationInformation.sort((a, b) => {
-      let fa = a.name.toLowerCase();
-      let fb = b.name.toLowerCase();
-      if (fa < fb) {
-        return -1;
-      }
-      if (fa > fb) {
-        return 1;
-      }
-      return 0;
+      let fa = a.capacity;
+      let fb = b.capacity;
+      return fb - fa;
     });
 
-    let firstFiftyStations: StationInformation[] = this.props.stationInformation.slice(
+    let firstFiftyStations: CombinedStation[] = this.props.stationInformation.slice(
       0,
       50
     );
 
-    return firstFiftyStations.map((station: StationInformation) => {
+    for (let i = 0; i < firstFiftyStations.length; i++) {
+      this.props.stationStatus.forEach(station => {
+        if (station.station_id === firstFiftyStations[i].station_id) {
+          let temp = { ...firstFiftyStations[i], ...station };
+          firstFiftyStations[i] = temp;
+        }
+      });
+    }
+
+    return firstFiftyStations.map(station => {
       let rentalMethods = station.rental_methods;
-      console.log(rentalMethods, 'RENTAL');
       return (
         <ul key={station.station_id}>
           <li>Name: {station.name}</li>
+          <li>{station.status}</li>
           <li>Station Address: {station.address}</li>
-          <li>Capacity: {station.capacity}</li>
+          <li>Cross Street: {station.cross_street}</li>
+          <li>
+            Available/Capacity: {station.num_bikes_available} /{' '}
+            {station.capacity}
+          </li>
+          <li>Number of Docks Available: {station.num_docks_available}</li>
           <li>
             Rental Methods:{' '}
             <ol>
@@ -80,36 +103,54 @@ class _App extends Component<AppProps> {
     });
   }
 
-  onInfoButtonClick = (): void => {
-    this.setState({ statusClicked: false, infoClicked: true });
-    this.props.fetchStationInformation();
-  };
+  renderSortedByName(): JSX.Element[] {
+    this.props.stationInformation.sort((a, b) => {
+      let fa = a.name.toLowerCase();
+      let fb = b.name.toLowerCase();
+      if (fa < fb) {
+        return -1;
+      }
+      if (fa > fb) {
+        return 1;
+      }
+      return 0;
+    });
 
-  renderStationInfo(): JSX.Element[] {
-    return this.props.stationInformation.map((station: StationInformation) => {
+    let firstFiftyStations: CombinedStation[] = this.props.stationInformation.slice(
+      0,
+      50
+    );
+
+    for (let i = 0; i < firstFiftyStations.length; i++) {
+      this.props.stationStatus.forEach(station => {
+        if (station.station_id === firstFiftyStations[i].station_id) {
+          let temp = { ...firstFiftyStations[i], ...station };
+          firstFiftyStations[i] = temp;
+        }
+      });
+    }
+
+    return firstFiftyStations.map(station => {
+      let rentalMethods = station.rental_methods;
       return (
         <ul key={station.station_id}>
           <li>Name: {station.name}</li>
+          <li>{station.status}</li>
           <li>Station Address: {station.address}</li>
-          <li>Capacity: {station.capacity}</li>
-          <li>Rental Methods: {station.rental_methods}</li>
-        </ul>
-      );
-    });
-  }
-
-  onStatusButtonClick = (): void => {
-    this.setState({ infoClicked: false, statusClicked: true });
-    this.props.fetchStationStatus();
-  };
-
-  renderStationStatus(): JSX.Element[] {
-    return this.props.stationStatus.map((station: StationStatus) => {
-      return (
-        <ul key={station.station_id}>
-          <li>Station Status: {station.status}</li>
-          <li>Bikes Available: {station.num_bikes_available}</li>
-          <li>Docks Disabled: {station.num_docks_disabled}</li>
+          <li>Cross Street: {station.cross_street}</li>
+          <li>
+            Available/Capacity: {station.num_bikes_available} /{' '}
+            {station.capacity}
+          </li>
+          <li>Number of Docks Available: {station.num_docks_available}</li>
+          <li>
+            Rental Methods:{' '}
+            <ol>
+              {rentalMethods.map(method => {
+                return <li>{method}</li>;
+              })}
+            </ol>
+          </li>
         </ul>
       );
     });
@@ -118,12 +159,10 @@ class _App extends Component<AppProps> {
   render() {
     return (
       <div>
-        {/* <button onClick={this.onInfoButtonClick}>Fetch Station Info</button>
-        <button onClick={this.onStatusButtonClick}>Fetch Station Status</button> */}
-        <button onClick={this.onStationNameClick}>Sort by Name</button>
-        {this.state.infoClicked && this.renderStationInfo()}
-        {this.state.statusClicked && this.renderStationStatus()}
-        {this.state.nameSort && this.renderSortedByName()}
+        <button onClick={this.onSortByNameClick}>Sort by Name</button>
+        <button onClick={this.onSortByCapacityClick}>Sort by Capacity</button>
+        {this.state.sortByName && this.renderSortedByName()}
+        {this.state.sortByCapacity && this.renderSortedByCapacity()}
       </div>
     );
   }
@@ -142,7 +181,6 @@ const mapStateToProps = (
 };
 
 //export the connected version of app
-
 export const App = connect(mapStateToProps, {
   fetchStationInformation,
   fetchStationStatus,

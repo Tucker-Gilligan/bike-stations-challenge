@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { stationInfoReducer } from './stationinfo';
-import { stationStatusReducer } from './stationstatus';
+import { stationInfoReducer } from './info';
+import { stationStatusReducer } from './status';
 import { StationInformation, StationStatus } from '../actions';
 
 export interface StoreState {

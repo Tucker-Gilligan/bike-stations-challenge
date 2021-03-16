@@ -1,5 +1,9 @@
-import { StationInformation, FetchStationInformationAction } from '../actions';
-import { ActionTypes } from '../actions/types';
+import {
+  StationInformation,
+  FetchStationInformationAction,
+  ActionTypes,
+} from '../actions';
+
 export const stationInfoReducer = (
   state: StationInformation[] = [],
   action: FetchStationInformationAction
