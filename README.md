@@ -49,3 +49,5 @@ This project is my first application utilizing TypeScript and Redux in a React A
 
 - Leverage the benefits of using Redux for state management to reduce the size of component files and need for local state
 - Further modularize tsx components and event listeners - this will come with practice using TS/Redux
+
+#### Need to incorporate error handling and testing
