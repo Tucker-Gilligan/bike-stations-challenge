@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/bike-stations-challenge/static/css/main.a3f24a16.chunk.css",
-    "main.js": "/bike-stations-challenge/static/js/main.659ff462.chunk.js",
-    "main.js.map": "/bike-stations-challenge/static/js/main.659ff462.chunk.js.map",
+    "main.css": "/bike-stations-challenge/static/css/main.99d67c24.chunk.css",
+    "main.js": "/bike-stations-challenge/static/js/main.df942b6d.chunk.js",
+    "main.js.map": "/bike-stations-challenge/static/js/main.df942b6d.chunk.js.map",
     "runtime-main.js": "/bike-stations-challenge/static/js/runtime-main.e89069f7.js",
     "runtime-main.js.map": "/bike-stations-challenge/static/js/runtime-main.e89069f7.js.map",
-    "static/js/2.d5dd5c5a.chunk.js": "/bike-stations-challenge/static/js/2.d5dd5c5a.chunk.js",
-    "static/js/2.d5dd5c5a.chunk.js.map": "/bike-stations-challenge/static/js/2.d5dd5c5a.chunk.js.map",
+    "static/js/2.d248e0b8.chunk.js": "/bike-stations-challenge/static/js/2.d248e0b8.chunk.js",
+    "static/js/2.d248e0b8.chunk.js.map": "/bike-stations-challenge/static/js/2.d248e0b8.chunk.js.map",
     "index.html": "/bike-stations-challenge/index.html",
-    "static/css/main.a3f24a16.chunk.css.map": "/bike-stations-challenge/static/css/main.a3f24a16.chunk.css.map",
-    "static/js/2.d5dd5c5a.chunk.js.LICENSE.txt": "/bike-stations-challenge/static/js/2.d5dd5c5a.chunk.js.LICENSE.txt"
+    "static/css/main.99d67c24.chunk.css.map": "/bike-stations-challenge/static/css/main.99d67c24.chunk.css.map",
+    "static/js/2.d248e0b8.chunk.js.LICENSE.txt": "/bike-stations-challenge/static/js/2.d248e0b8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e89069f7.js",
-    "static/js/2.d5dd5c5a.chunk.js",
-    "static/css/main.a3f24a16.chunk.css",
-    "static/js/main.659ff462.chunk.js"
+    "static/js/2.d248e0b8.chunk.js",
+    "static/css/main.99d67c24.chunk.css",
+    "static/js/main.df942b6d.chunk.js"
   ]
 }
