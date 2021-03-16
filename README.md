@@ -25,10 +25,11 @@ This application was developed as part of a coding challenge, as well as for pra
 
 ## Technologies Used
 
-- TypeScript
+- TypeScript - Superset of JavaScript which helps with catching mistakes early through a type system.
 - React - initiated with npx create-react-app --template typescript
 - React-Redux - handles state management in a single store - supports bindings between redux and react.
 - Redux-Thunk - middleware that allows action creaters that return a function instead of an action. Used in this application for async cals to api
+- Redux Devtools - Chrome extension which allows tracking of state changes
 - Axios - to execute GET requests
 
 ## What I Learned

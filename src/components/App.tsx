@@ -126,14 +126,19 @@ class _App extends Component<AppProps> {
   render() {
     return (
       <div className='App__main'>
-        <div className='sort__options'>
-          <button className='sort__button' onClick={this.onSortByNameClick}>
-            Sort by Name
-          </button>
-          <button className='sort__button' onClick={this.onSortByCapacityClick}>
-            Sort by Capacity
-          </button>
-        </div>
+        <header className='header__container'>
+          <h1 className='title'>Bike Stations</h1>
+          <div className='sort__options'>
+            <button className='sort__button' onClick={this.onSortByNameClick}>
+              Sort by Name
+            </button>
+            <button
+              className='sort__button'
+              onClick={this.onSortByCapacityClick}>
+              Sort by Capacity
+            </button>
+          </div>
+        </header>
         <div className='main__container'>
           {this.state.fetching && <p>loading....</p>}
           {this.state.sortByName && this.renderSortedByName()}

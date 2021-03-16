@@ -43,14 +43,22 @@ export default class Station extends Component<CurrentState> {
 
     return (
       <ul className='station__list__item'>
-        <li>Capacity: {station.capacity}</li>
+        <li className='capacity'>Capacity: {station.capacity} </li>
+
         <li className='station__header'>
-          <h2 className='station__info'>
-            <span className='station__label'>Station</span>
-            <span className='station__name'>{station.name}</span>
-            <span className='station__label'>Address</span>
-            <span className='station__address'>{station.address}</span>
-          </h2>
+          <div className='station__payment'>
+            <h2 className='station__info'>
+              <div className='label__data'>
+                <span className='station__label'>Station</span>
+                <span className='station__name'>{station.name}</span>
+              </div>
+              <div className='label__data'>
+                <span className='station__label'>Address</span>
+                <span className='station__address'>{station.address}</span>
+              </div>
+            </h2>
+          </div>
+          <p className='payment__options'>{rentalMethods.join(' / ')}</p>
         </li>
 
         <li className='availability'>
@@ -66,9 +74,6 @@ export default class Station extends Component<CurrentState> {
             </span>{' '}
             {station.num_docks_available === 1 ? 'Dock' : 'Docks'}
           </h3>
-        </li>
-        <li className='rental__methods'>
-          <p className='payment__options'>{rentalMethods.join(' / ')}</p>
         </li>
       </ul>
     );

@@ -1,3 +1,19 @@
+.header__container {
+  background-color: #fff;
+  margin-top: 0;
+  padding-top: 0;
+  border-bottom: solid 0.2rem green;
+}
+
+.title {
+  text-align: center;
+  margin: 0;
+}
+
+.main__container {
+  /* padding-top: 9rem; */
+}
+
 .station__list__item {
   color: #1b1719;
   background-color: #d4d6d5;
@@ -45,14 +61,16 @@
 }
 .sort__options {
   display: flex;
-  justify-content: space-evenly;
-  padding: 2rem;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
 .sort__button {
   font-size: 120%;
   padding: 0.5rem;
   border-radius: 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
 }
 
 .red {
@@ -71,8 +89,10 @@
   display: flex;
   justify-content: space-evenly;
 }
-
-.rental__methods {
+.capacity {
+  text-align: left;
+}
+.payment__options {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,6 +107,37 @@
 
   white-space: nowrap;
 }
-.payment__option {
-  padding: 0.3rem;
+.station__payment {
+  display: flex;
+}
+
+@media all and (min-width: 900px) {
+  .header__container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 250%;
+  }
+  .sort__options {
+    padding: 0;
+  }
+  .station__info {
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .label__data {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+  .station__label {
+    padding: 0;
+  }
+  .main__container {
+    font-size: 120%;
+  }
 }
