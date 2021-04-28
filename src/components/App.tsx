@@ -138,7 +138,8 @@ class _App extends Component<AppProps> {
             </button>
             <button
               className='sort__button'
-              onClick={this.onSortByCapacityClick}>
+              onClick={this.onSortByCapacityClick}
+            >
               Sort by Capacity
             </button>
           </div>
